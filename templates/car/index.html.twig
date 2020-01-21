@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cars list{% endblock %}
+
+{% block h1 %} Liste des voitures{% endblock %}
+
+{% block body %}
+    <div class="row no-gutters">
+        {% for car in cars %}
+            <div class="col-12 col-lg-6 p-1">
+                <div class="card mb-3">
+                    <div class="row no-gutters align-items-center p-2">
+                        <div class="col-12 col-md-4">
+                            <img src="{{ asset("images/" ~ car.carModel.image) }}" alt="" class="card-img">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ car.immatriculation }}</h5>
+                                <p class="card-text">
+                                <div>Brand: {{ car.carModel.brand.wording }}</div>
+                                <div>Car Model: {{ car.carModel.wording }}</div>
+                                <div>Number of doors: {{ car.doorNumber }}</div>
+                                <div>Year: {{ car.year }}</div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
