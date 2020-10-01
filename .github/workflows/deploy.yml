@@ -4,22 +4,22 @@ on:
     branches:
       - master
 jobs:
-    deploy:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Init Project
-          uses: actions/checkout@v2
-        - name: Linter PHP
-          uses: michaelw90/PHP-Lint@master
-        - name: Symfony checker security
-          uses: symfonycorp/security-checker-action@v2
-        - name: PHPStan
-          uses: docker://oskarstark/phpstan-ga
-          with:ap
-             args: analyse src/ --level=5
-        - name: Heroku's Deploy
-          uses: akhileshns/heroku-deploy@v3.5.6 # This is the action
-          with:
-            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-            heroku_app_name: ${{secrets.HEROKU_APP}}
-            heroku_email: ${{secrets.HEROKU_EMAIL}}
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Init Project
+        uses: actions/checkout@v2
+      - name: Linter PHP
+        uses: michaelw90/PHP-Lint@master
+      - name: Symfony checker security
+        uses: symfonycorp/security-checker-action@v2
+      - name: PHPStan
+        uses: docker://oskarstark/phpstan-ga
+        with:
+          args: analyse src/ --level=5
+      - name: Heroku's Deploy
+        uses: akhileshns/heroku-deploy@v3.5.6 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
