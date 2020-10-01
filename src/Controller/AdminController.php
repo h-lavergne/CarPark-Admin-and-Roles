@@ -96,13 +96,14 @@ class AdminController extends AbstractController
      * @param Request $request
      * @return RedirectResponse
      */
-    public function delete(Car $car, EntityManagerInterface $em, Request $request)
+    public function delete(Car $car, EntityManagerInterface $em, Request $request): RedirectResponse
     {
         if ($this->isCsrfTokenValid("delete" . $car->getId(), $request->get("_token"))){
             $em->remove($car);
             $em->flush();
             return $this->redirectToRoute("admin.car.index");
         }
+        return $this->redirectToRoute("admin.car.index");
     }
 
 }

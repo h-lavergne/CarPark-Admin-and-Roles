@@ -16,7 +16,7 @@ jobs:
       - name: PHPStan
         uses: docker://oskarstark/phpstan-ga
         with:
-          args: analyse src/ --level=5
+          args: analyse src/ --level=4
       - name: Heroku's Deploy
         uses: akhileshns/heroku-deploy@v3.5.6 # This is the action
         with:
