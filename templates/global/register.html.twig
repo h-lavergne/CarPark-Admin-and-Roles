@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GlobalController!{% endblock %}
+
+{% block h1 %} Register now !{% endblock %}
+{% block body %}
+ <div class="container mt-5 ">
+     <div class="row no-gutters align-items-center">
+         <div class="col-6 mx-auto">
+             {{ form_start(form) }}
+             {{ form_widget(form) }}
+             <input type="submit" class="btn btn-primary" value="Register">
+             {{ form_end(form) }}
+         </div>
+
+     </div>
+ </div>
+
+{% endblock %}

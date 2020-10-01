@@ -5,6 +5,22 @@
 {% block h1 %} Liste des voitures{% endblock %}
 
 {% block body %}
+    {{ form_start(form) }}
+    <div class="row no-gutters align-items-center text-center">
+        <div class="col">
+            {{ form_row(form.minYear) }}
+        </div>
+        <div class="col ml-2">
+            {{ form_row(form.maxYear) }}
+        </div>
+        <div class="col-2">
+            <input type="submit" class="btn btn-primary">
+        </div>
+
+    </div>
+    {{ form_end(form) }}
+    <a href="{{ path("admin.car.create") }}" class="btn btn-success d-block">Create</a>
+
     <div class="row no-gutters">
         {% for car in cars %}
             <div class="col-12 col-lg-6 p-1">
@@ -24,10 +40,23 @@
                                 </p>
                             </div>
                         </div>
+                        {% if admin %}
+                            <div class="col">
+                                <a href="{{ path("admin.car.edit", {"id": car.id}) }}" class="btn btn-info">Edit</a>
+                                <form action="{{ path("admin.car.delete", {"id": car.id}) }}" method="post">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" name="_token" value="{{ csrf_token("delete" ~ car.id) }}">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
+                                </form>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         {% endfor %}
+    </div>
+    <div class="navigation mb-2">
+        {{ knp_pagination_render(cars) }}
     </div>
 
 {% endblock %}

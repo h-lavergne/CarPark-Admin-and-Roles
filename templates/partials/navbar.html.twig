@@ -9,9 +9,30 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path("home") }}">Home</a>
             </li>
+            {% if is_granted("ROLE_USER") or is_granted("ROLE_ADMIN") %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path("car.index") }}">Cars</a>
             </li>
+            {% endif %}
+
+            {% if is_granted("ROLE_ADMIN") %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path("admin.car.index") }}">Admin</a>
+            </li>
+            {% endif %}
+
+            {% if not app.user %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path("register") }}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path("login") }}">Login</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path("logout") }}">Logout</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

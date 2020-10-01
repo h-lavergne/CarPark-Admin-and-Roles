@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+{% block h1 %}Create a new car{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" class="btn btn-primary rounded-pill" value="Valider">
+                {{ form_end(form) }}
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
