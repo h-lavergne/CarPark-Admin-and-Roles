@@ -108,6 +108,7 @@ class User implements UserInterface
      */
     public function getSalt(): ?string
     {
+        return null;
         // TODO: Implement getSalt() method.
     }
 
