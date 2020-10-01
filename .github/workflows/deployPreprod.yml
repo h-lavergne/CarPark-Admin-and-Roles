@@ -1,4 +1,4 @@
-name: Deploy website to Heroku
+name: Deploy preprod website to Heroku
 on:
   push:
     branches:
